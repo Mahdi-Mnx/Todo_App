@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +29,4 @@ public class User {
     @NotNull(message = "Email cannot be null")
     @Email(message = "Email should be valid")
     private String email;
-
-    public void setUserId(Long id) {
-
-    }
 }

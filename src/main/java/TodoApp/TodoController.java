@@ -21,7 +21,6 @@ public class TodoController {
         return "/User/Registration";
     }
 
-
     @GetMapping("/login")
     public String getLoginPage() {
         return "/User/Login";
