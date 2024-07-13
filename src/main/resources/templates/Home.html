@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Todo App</title>
+    <style>
+        body {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        .links:hover {
+            color: #10b981;
+            border-bottom: 3px solid #10b981;
+        }
+
+        .links.active {
+            color: #10b981;
+            border-bottom: 3px solid #10b981;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                jacar: '#10b981',
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+    <div class="flex justify-between text-center px-8 border-b-2 border-[#1c1c1c] items-center h-[40px] max-w-screen-xl mx-auto">
+        <div>Logo</div>
+        <div>
+            <ul class="flex justify-between gap-4">
+                <li class="links text-[#333333] font-bold cursor-pointer pb-3 transition duration-300 ease-in-out">Home</li>
+                <li class="links text-[#333333] font-bold cursor-pointer pb-3 transition duration-300 ease-in-out">About</li>
+                <li class="links text-[#333333] font-bold cursor-pointer pb-3 transition duration-300 ease-in-out">Developers</li>
+            </ul>
+        </div>
+        <div>
+            <button class="bg-jacar py-0.5 px-3 text-white rounded-md transition duration-300 ease-in-out hover:bg-jacar/90">
+                <a href="/register">Login</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+<h1 class="text-3xl font-bold underline mt-10 text-center">
+    Hello world!
+</h1>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const links = document.querySelectorAll(".links");
+
+    links.forEach(link => {
+        link.addEventListener("click", function() {
+            links.forEach(l => l.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+});
+
+</script>
+</body>
+</html>

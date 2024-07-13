@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.links:hover {
+    color: #6495ED; /* Soft blue color */
+    border-bottom: 3px solid #6495ED;
+}
+
+.links:focus {
+    color: #6495ED;
+    border-bottom: 3px solid #6495ED;
+}
+
+.links:-moz-focusing {
+    color: #6495ED;
+    border-bottom: 3px solid #6495ED;
+}
+
+.links.active {
+    color: #6495ED;
+    border-bottom: 3px solid #6495ED;
+}

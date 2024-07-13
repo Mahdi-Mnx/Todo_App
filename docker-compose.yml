@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  postgres:
+    container_name: Todo_App
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: jacar
+      POSTGRES_PASSWORD: jacar
+      POSTGRES_DB: todo
+    ports:
+      - "5432:5432"
+  pgadmin:
+    container_name: pgadmin4_Todo
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: mnx@jacar.com
+      PGADMIN_DEFAULT_PASSWORD: jacar
+    ports:
+      - "5055:80"
