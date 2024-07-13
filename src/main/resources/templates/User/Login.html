@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.com">
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -42,7 +42,7 @@ body{
   height: 3px;
   width: 28px;
   border-radius: 12px;
-  background: #4070f4;
+  background: #10b981;
 }
 .wrapper form{
   margin-top: 30px;
@@ -107,26 +107,19 @@ form .text h3 a:hover{
 
 <!-- Registration Form -->
 <div class="wrapper">
-    <h2>Registration</h2>
+    <h2>Welcome Back Login now/</h2>
     <form action="#">
-        <div class="input-box">
-            <input type="text" placeholder="Enter your name" required>
-        </div>
         <div class="input-box">
             <input type="text" placeholder="Enter your email" required>
         </div>
         <div class="input-box">
-            <input type="password" placeholder="Create password" required>
-        </div>
-        <div class="policy">
-            <input type="checkbox">
-            <h3>I accept all terms & condition</h3>
+            <input type="password" placeholder="password" required>
         </div>
         <div class="input-box button">
-            <input type="Submit" value="Register Now">
+            <input type="Submit" value="Login Now">
         </div>
         <div class="text">
-            <h3>Already have an account? <a href="/login">Login now</a></h3>
+            <h3>i don't have an account? <a href="/register">Register now</a></h3>
         </div>
     </form>
 </div>

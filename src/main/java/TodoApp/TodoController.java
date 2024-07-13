@@ -20,4 +20,10 @@ public class TodoController {
     public String getRegisterPage() {
         return "/User/Registration";
     }
+
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "/User/Login";
+    }
 }
