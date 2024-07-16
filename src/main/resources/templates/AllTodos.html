@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <div th:replace="Fragments/Header :: head"></div>
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-blue-200">
+<div th:replace="Fragments/Nav :: nav"></div>
+
+<div class="flex justify-end items-center p-5">
+    <button class="text-xl px-2 py-1 font-bold bg-white hover:bg-black hover:text-white rounded-md transition-transform duration-500">
+        <a href="/create">Create a new</a>
+    </button>
+</div>
+
+<div class="flex gap-4 justify-center mb-4">
+    <div class="flex items-center justify-center flex-wrap gap-4">
+        <div th:each="item : ${todos}" class="bg-white p-4 rounded-lg shadow-2xl w-full max-w-md transform transition-transform duration-500 group hover:scale-105">
+            <div class="space-y-4">
+                <div>
+                    <p class="text-xl p-3 bg-gray-100 rounded-md min-w-96 shadow-inner" th:text="${item.title}"></p>
+                </div>
+                <div>
+                    <p class="text-lg p-3 bg-gray-100 rounded-md shadow-inner text-wrap" th:text="${item.description}"></p>
+                </div>
+                <div class="text-end">
+                    <p class="text-sm py-1 px-3 bg-green-400 text-white rounded-md inline-block">Not Started</p>
+                </div>
+            </div>
+            <div class="flex justify-between items-center">
+                <button class="mt-6 px-4 py-2 font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md w-[50px] transform transition-all duration-300 group-hover:opacity-100 opacity-0">
+                    <a th:href="@{/update(todoId=${item.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
+                </button>
+                <button class="mt-6 px-4 py-2 font-bold bg-red-500 hover:bg-red-600 text-white rounded-md w-[50px] transform transition-all duration-300 group-hover:opacity-100 opacity-0">
+                    <a th:href="@{/deleted/{todo_id}(todo_id=${item.todo_id})}"><i class="fa-solid fa-trash"></i></a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const links = document.querySelectorAll(".links a");
+        const currentPath = window.location.pathname;
+
+        links.forEach(link => {
+            if (link.getAttribute("href") === currentPath) {
+                link.parentElement.classList.add("active");
+            }
+
+            link.addEventListener("click", function() {
+                links.forEach(l => l.parentElement.classList.remove("active"));
+                this.parentElement.classList.add("active");
+            });
+        });
+    });
+</script>
+</body>
+</html>

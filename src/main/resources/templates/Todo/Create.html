@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <title>Create</title>
+    <div th:replace="Fragments/Header :: head"></div>
+</head>
+
+<body >
+<div th:replace="Fragments/Nav :: nav"></div>
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+
+<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-4 text-center">Create New Todo</h1>
+    <form th:action="@{/create}" method="post" class="space-y-4">
+        <input class="text-xl border border-black w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title">
+
+        <textarea class="text-xl border border-black w-full p-2 rounded-md" name="description" placeholder="Enter todo description here"></textarea>
+
+        <button class="text-xl px-4 py-2 font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md w-full" type="submit">Create Todo</button>
+    </form>
+</div>
+</div>
+</body>
+</html>

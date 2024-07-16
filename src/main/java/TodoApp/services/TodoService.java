@@ -1,5 +1,7 @@
-package TodoApp;
+package TodoApp.services;
 
+import TodoApp.Models.Todo;
+import TodoApp.repositories.TodoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,9 +22,7 @@ public class TodoService {
         repo.save(todo);
     }
 
-    public void deleteTodo(Long id){
-        repo.deleteById(id);
-    }
+
 
     public Todo getTodoById(Long id){
        return repo.findById(id).orElse(null);
@@ -30,5 +30,9 @@ public class TodoService {
 
     public List<Todo> getAllTodos(){
         return repo.findAll();
+    }
+
+    public void deleteTodo(Long todo_id){
+        repo.deleteById(todo_id);
     }
 }

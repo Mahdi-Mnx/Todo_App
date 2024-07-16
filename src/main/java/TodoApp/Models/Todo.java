@@ -1,4 +1,4 @@
-package TodoApp;
+package TodoApp.Models;
 
 import jakarta.persistence.*;
 import lombok.*;
