@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.com">
 <head>
     <meta charset="UTF-8">
@@ -30,12 +30,16 @@
                 </div>
             </div>
             <div class="flex justify-between items-center">
-                <button class="mt-6 px-4 py-2 font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md w-[50px] transform transition-all duration-300 group-hover:opacity-100 opacity-0">
-                    <a th:href="@{/update(todoId=${item.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
-                </button>
-                <button class="mt-6 px-4 py-2 font-bold bg-red-500 hover:bg-red-600 text-white rounded-md w-[50px] transform transition-all duration-300 group-hover:opacity-100 opacity-0">
-                    <a th:href="@{/deleted/{todo_id}(todo_id=${item.todo_id})}"><i class="fa-solid fa-trash"></i></a>
-                </button>
+                <a th:href="@{/update/{todoId}(todoId=${item.todoId})}">
+                    <button class="mt-6 px-4 py-2 font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md w-[50px] transform transition-all duration-300 group-hover:opacity-100 opacity-0">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                </a>
+                <a th:href="@{/deleted/{todo_id}(todo_id=${item.todoId})}">
+                    <button class="mt-6 px-4 py-2 font-bold bg-red-500 hover:bg-red-600 text-white rounded-md w-[50px] transform transition-all duration-300 group-hover:opacity-100 opacity-0">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </a>
             </div>
         </div>
     </div>

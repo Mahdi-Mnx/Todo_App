@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
 <head>
-    <title>Update</title>
+    <meta charset="UTF-8">
+    <title>Update Todo</title>
     <div th:replace="Fragments/Header :: head"></div>
 </head>
-<body >
+<body>
 <div th:replace="Fragments/Nav :: nav"></div>
 
 <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4 text-center">Update Todo</h1>
+        <form th:action="@{/update}" method="post" th:object="${todo}" class="space-y-4">
+            <input type="hidden" th:field="*{todoId}" />
+            <input th:field="*{title}" class="text-xl border border-gray-300 w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title" required>
+            <textarea th:field="*{description}" class="text-xl border border-gray-300 w-full p-2 rounded-md" name="description" placeholder="Enter todo description here" required></textarea>
 
+            <div class="flex items-center space-x-4">
+                <label class="text-xl">
+                    <input type="radio" name="status" value="complete" class="mr-2"> Complete
+                </label>
+                <label class="text-xl">
+                    <input type="radio" name="status" value="notstarted" class="mr-2"> Not Started
+                </label>
+            </div>
 
-<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-    <h1 class="text-2xl font-bold mb-4 text-center">Update Todo</h1>
-    <form th:action="@{/update}" method="post" class="space-y-4">
-        <input class="text-xl border border-gray-300 w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title" required>
-
-        <textarea class="text-xl border border-gray-300 w-full p-2 rounded-md" name="description" placeholder="Enter todo description here" required></textarea>
-
-        <div class="flex items-center space-x-4">
-            <label class="text-xl">
-                <input type="radio" name="status" value="complete" class="mr-2"> Complete
-            </label>
-            <label class="text-xl">
-                <input type="radio" name="status" value="notstarted" class="mr-2"> Not Started
-            </label>
-        </div>
-
-        <button class="text-xl px-4 py-2 font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md w-full" type="submit">Update Todo</button>
-    </form>
-</div>
+            <button class="text-xl px-4 py-2 font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md w-full" type="submit">Update Todo</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

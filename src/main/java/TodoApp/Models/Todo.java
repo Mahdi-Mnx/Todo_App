@@ -9,13 +9,13 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "todo")
-
 public class Todo {
-    // Waxbarta aan barwaaqo gaarnee
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long todoId;
+
     @Column(nullable = true, length = 50)
     private String title;
+
     private String description;
 }

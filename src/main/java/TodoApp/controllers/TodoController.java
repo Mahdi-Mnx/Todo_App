@@ -29,7 +29,7 @@ public class TodoController {
     @PostMapping("/create")
     public String createTodo(@ModelAttribute Todo todo){
         service.createTodo(todo);
-        return "redirect:/";
+        return "redirect:/todos";
     }
 
     @GetMapping("/todos")
@@ -39,10 +39,20 @@ public class TodoController {
         return "AllTodos";
     }
 
+    @GetMapping("/update/{todoId}")
+    public String getUpdatePage(@PathVariable Long todoId, Model model){
+        Todo todo = service.getTodoById(todoId);
+        if(todo != null){
+            model.addAttribute("todo", todo);
+            return "/Todo/UpdateTodo";
+        }
+        return "redirect:/todos";
+    }
 
-    @GetMapping("/update")
-    public String getUpdatePage() {
-        return "/Todo/UpdateTodo";
+    @PostMapping("/update")
+    public String updateTodo(@ModelAttribute Todo todo){
+        service.UpdateTodo(todo);
+        return "redirect:/todos";
     }
 
     @RequestMapping("/deleted/{todo_id}")
@@ -50,5 +60,4 @@ public class TodoController {
         service.deleteTodo(todo_id);
         return "redirect:/todos";
     }
-
 }
