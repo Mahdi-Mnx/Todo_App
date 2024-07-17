@@ -16,6 +16,5 @@ public class Todo {
 
     @Column(nullable = true, length = 50)
     private String title;
-
     private String description;
 }

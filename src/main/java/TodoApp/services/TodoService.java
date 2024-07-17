@@ -35,4 +35,9 @@ public class TodoService {
     public void deleteTodo(Long todo_id){
         repo.deleteById(todo_id);
     }
+
+    // New search methods
+    public List<Todo> searchTodosByTitle(String title){
+        return repo.findByTitleContaining(title);
+    }
 }

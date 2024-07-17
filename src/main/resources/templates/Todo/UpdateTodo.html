@@ -12,7 +12,7 @@
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h1 class="text-2xl font-bold mb-4 text-center">Update Todo</h1>
         <form th:action="@{/update}" method="post" th:object="${todo}" class="space-y-4">
-            <input type="hidden" th:field="*{todoId}" />
+
             <input th:field="*{title}" class="text-xl border border-gray-300 w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title" required>
             <textarea th:field="*{description}" class="text-xl border border-gray-300 w-full p-2 rounded-md" name="description" placeholder="Enter todo description here" required></textarea>
 

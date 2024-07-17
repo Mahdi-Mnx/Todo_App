@@ -60,4 +60,31 @@ public class TodoController {
         service.deleteTodo(todo_id);
         return "redirect:/todos";
     }
+
+    // New search endpoint
+    @GetMapping("/search")
+    public String searchTodos(@RequestParam String query, Model model) {
+        List<Todo> todos;
+        String message = null;
+        try {
+            // Try to parse the query as a Long to see if it can be an ID
+            Long id = Long.parseLong(query);
+            Todo todo = service.getTodoById(id);
+            todos = todo != null ? List.of(todo) : List.of();
+            if (todos.isEmpty()) {
+                message = "Todo with ID " + id + " not found.";
+            }
+        } catch (NumberFormatException e) {
+            // If parsing fails, treat the query as a title
+            todos = service.searchTodosByTitle(query);
+            if (todos.isEmpty()) {
+                message = "Todos with title '" + query + "' not found.";
+            }
+        }
+        model.addAttribute("todos", todos);
+        model.addAttribute("message", message);
+        return "AllTodos";
+    }
+
+
 }

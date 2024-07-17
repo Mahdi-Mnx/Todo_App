@@ -1,6 +1,6 @@
 <nav>
     <div class="header">
-        <div class="flex justify-between text-center px-8 border-b-2 border-[#1c1c1c] items-center h-[40px] max-w-screen-xl mx-auto">
+        <div class="flex justify-between items-center text-center px-8 border-b-2 border-[#1c1c1c] items-center h-[40px] max-w-screen-xl mx-auto">
             <div class="text-xl font-bold">GOG</div>
             <div>
                 <ul class="flex justify-between gap-4">
@@ -15,11 +15,14 @@
                     </li>
                 </ul>
             </div>
-            <div>
-                <button class="bg-jacar py-0.5 px-3 text-white rounded-md transition duration-300 ease-in-out hover:bg-jacar/90">
-                    <a href="/">Get start</a>
+            <form action="/search" method="get" class="flex items-center gap-4 ">
+                <input class="border outline-none h-8 w-full rounded-md border-gray-300 px-2 py-0.5 text-sm shadow-sm transition-colors" type="text" name="query" placeholder="Search by ID or title" />
+                <button class="bg-jacar w-40 py-0.5 px-3 text-white rounded-md transition duration-300 ease-in-out hover:bg-jacar/90" type="submit">
+                    Search
                 </button>
-            </div>
+            </form>
+
+
         </div>
     </div>
 </nav>
