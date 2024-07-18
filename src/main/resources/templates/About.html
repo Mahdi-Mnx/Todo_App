@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <div th:replace="Fragments/Header :: head"></div>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="Fragments/Nav :: nav"></div>
+
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-green-500">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">About Us</h1>
+        <p class="text-lg mb-6 text-gray-700">
+            Welcome to our Todo Application. This app helps you keep track of your tasks and stay organized.
+            You can create, update, delete, and search todos with ease.
+        </p>
+        <p class="text-lg mb-6 text-gray-700">
+            Our goal is to provide a simple and efficient tool for managing your daily tasks.
+            We hope this application helps you stay productive and organized.
+        </p>
+        <p class="text-lg mb-6 text-gray-700">
+            Developed by:
+        <ul class="list-disc pl-6">
+            <li>Mohamed Apdifitaah Mohamed C1211332</li>
+            <li>Mahdi Abdulkadir Ahmed C1211314</li>
+            <li>Shuceyb Mohamed Aaden C1210950</li>
+            <li>Hassan Mohamed Zuber C1210986</li>
+            <li>Sadaq Elmi Abdulle C1210862</li>
+            <li>Shuceyb Mohamed Aaden C1210950</li>
+        </ul>
+        </p>
+        <p class="text-lg text-gray-700">
+            For any inquiries or feedback, please contact us at <a href="mailto:maxamedcabdifitaax33@gmail.com" class="text-blue-500 underline">support@todoapp.com</a>.
+        </p>
+    </div>
+</div>
+</body>
+</html>

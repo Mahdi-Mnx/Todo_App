@@ -21,6 +21,12 @@ public class TodoController {
         return "Home";  // Returns the view name for the home page
     }
 
+    @GetMapping("/about")
+    public String getAboutPage() {
+        return "About";  // Return the name of the about page template
+    }
+
+
     @GetMapping("/create")  // Maps GET requests to the /create URL
     public String getCreatePage() {
         return "/Todo/Create";  // Returns the view name for the create page
