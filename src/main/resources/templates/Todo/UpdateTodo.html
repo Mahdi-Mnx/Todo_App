@@ -5,23 +5,33 @@
     <title>Update Todo</title>
     <div th:replace="Fragments/Header :: head"></div>
 </head>
+<style>
+    .error-message {
+        color: red;
+        font-size: 0.875em;
+        display: none;
+    }
+</style>
 <body>
 <div th:replace="Fragments/Nav :: nav"></div>
 
 <div class="flex items-center justify-center min-h-screen bg-gray-100">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h1 class="text-2xl font-bold mb-4 text-center">Update Todo</h1>
-        <form th:action="@{/update}" method="post" th:object="${todo}" class="space-y-4">
+        <form th:action="@{/update}" method="post" th:object="${todo}" class="space-y-4" onsubmit="return validateForm()">
+            <p th:text="${todo.todoId}" class="bg-jacar w-7 h-7 rounded-full p-1 text-sm text-white font-bold"></p>
+            <input th:field="*{title}" id="title" class="text-xl border border-gray-300 w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title" >
+            <p id="title-error" class="error-message">Title is required.</p>
+            <textarea th:field="*{description}" id="description" class="text-xl border border-gray-300 w-full p-2 rounded-md" name="description" placeholder="Enter todo description here"></textarea>
+            <p id="description-error" class="error-message">Description is required.</p>
 
-            <input th:field="*{title}" class="text-xl border border-gray-300 w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title" required>
-            <textarea th:field="*{description}" class="text-xl border border-gray-300 w-full p-2 rounded-md" name="description" placeholder="Enter todo description here" required></textarea>
 
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-4"> <!-- Radio buttons for the todo status -->
                 <label class="text-xl">
-                    <input type="radio" name="status" value="complete" class="mr-2"> Complete
+                    <input type="radio" th:field="*{status}" value="COMPLETE" class="mr-2"> Complete
                 </label>
                 <label class="text-xl">
-                    <input type="radio" name="status" value="notstarted" class="mr-2"> Not Started
+                    <input type="radio" th:field="*{status}" value="NOT_STARTED" class="mr-2" checked="checked"> Not Started
                 </label>
             </div>
 
@@ -29,5 +39,31 @@
         </form>
     </div>
 </div>
+
+<script>
+    function validateForm() {
+        let isValid = true;
+        const title = document.getElementById('title');
+        const description = document.getElementById('description');
+        const titleError = document.getElementById('title-error');
+        const descriptionError = document.getElementById('description-error');
+
+        if (!title.value.trim()) {
+            titleError.style.display = 'block';
+            isValid = false;
+        } else {
+            titleError.style.display = 'none';
+        }
+
+        if (!description.value.trim()) {
+            descriptionError.style.display = 'block';
+            isValid = false;
+        } else {
+            descriptionError.style.display = 'none';
+        }
+
+        return isValid;
+    }
+</script>
 </body>
 </html>

@@ -31,7 +31,7 @@
                     <p class="text-lg p-3 bg-gray-100 rounded-md shadow-inner text-wrap" th:text="${item.description}"></p>
                 </div>
                 <div class="text-end">
-                    <p class="text-sm py-1 px-3 bg-green-400 text-white rounded-md inline-block">Not Started</p>
+                    <p class="text-sm py-1 px-3  text-white rounded-md inline-block" th:classappend="${item.status == 'COMPLETE'} ? 'bg-green-400 text-white' : 'bg-green-400 text-white'" th:text="${item.status}"></p>
                 </div>
             </div>
             <div class="flex justify-between items-center">

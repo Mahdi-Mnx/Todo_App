@@ -3,23 +3,57 @@
 <head>
     <title>Create</title>
     <div th:replace="Fragments/Header :: head"></div>
+    <style>
+        .error-message {
+            color: red;
+            font-size: 0.875em;
+            display: none;
+        }
+    </style>
 </head>
 
-<body >
+<body>
 <div th:replace="Fragments/Nav :: nav"></div>
 
 <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4 text-center">Create New Todo</h1>
+        <form th:action="@{/create}" method="post" class="space-y-4" onsubmit="return validateForm()">
+            <input id="title" class="text-xl border border-black w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title">
+            <p id="title-error" class="error-message">Title is required.</p>
 
-<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-    <h1 class="text-2xl font-bold mb-4 text-center">Create New Todo</h1>
-    <form th:action="@{/create}" method="post" class="space-y-4">
-        <input class="text-xl border border-black w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title">
+            <textarea id="description" class="text-xl border border-black w-full p-2 rounded-md" name="description" placeholder="Enter todo description here"></textarea>
+            <p id="description-error" class="error-message">Description is required.</p>
 
-        <textarea class="text-xl border border-black w-full p-2 rounded-md" name="description" placeholder="Enter todo description here"></textarea>
-
-        <button class="text-xl px-4 py-2 font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md w-full" type="submit">Create Todo</button>
-    </form>
+            <button class="text-xl px-4 py-2 font-bold bg-blue-500 hover:bg-blue-600 text-white rounded-md w-full" type="submit">Create Todo</button>
+        </form>
+    </div>
 </div>
-</div>
+
+<script>
+    function validateForm() {
+        let isValid = true;
+        const title = document.getElementById('title');
+        const description = document.getElementById('description');
+        const titleError = document.getElementById('title-error');
+        const descriptionError = document.getElementById('description-error');
+
+        if (!title.value.trim()) {
+            titleError.style.display = 'block';
+            isValid = false;
+        } else {
+            titleError.style.display = 'none';
+        }
+
+        if (!description.value.trim()) {
+            descriptionError.style.display = 'block';
+            isValid = false;
+        } else {
+            descriptionError.style.display = 'none';
+        }
+
+        return isValid;
+    }
+</script>
 </body>
 </html>
