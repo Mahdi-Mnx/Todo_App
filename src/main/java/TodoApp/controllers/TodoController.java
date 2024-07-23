@@ -26,7 +26,6 @@ public class TodoController {
         return "About";  // Return the name of the about page template
     }
 
-
     @GetMapping("/create")  // Maps GET requests to the /create URL
     public String getCreatePage() {
         return "/Todo/Create";  // Returns the view name for the create page
@@ -45,7 +44,7 @@ public class TodoController {
         return "AllTodos";  // Returns the view name for displaying all todos
     }
 
-    @GetMapping("/update/{todoId}")  // Maps GET requests to the /update/{todoId} URL
+    @GetMapping("/todos/update/{todoId}")  // Maps GET requests to the /update/{todoId} URL
     public String getUpdatePage(@PathVariable Long todoId, Model model){
         Todo todo = service.getTodoById(todoId);  // Gets the todo by ID from the service
         if(todo != null){
@@ -55,15 +54,23 @@ public class TodoController {
         return "redirect:/todos";  // Redirects to the /todos URL if the todo is not found
     }
 
-    @PostMapping("/update")  // Maps POST requests to the /update URL
-    public String updateTodo(@ModelAttribute Todo todo){  // Handles form submissions for updating a todo
-        service.updateTodo(todo);  // Calls the service to update the todo
+    @PostMapping("/todos/update/{todoId}")  // Maps POST requests to the /update URL
+    public String updateTodo(@PathVariable Long todoId, @ModelAttribute Todo todo){  // Handles form submissions for updating a todo
+        Todo existingTodo = service.getTodoById(todoId);
+
+        if (existingTodo != null) {
+            existingTodo.setTitle(todo.getTitle());
+            existingTodo.setDescription(todo.getDescription());
+            existingTodo.setStatus(todo.getStatus());
+            service.updateTodo(existingTodo);  // Calls the service to update the todo
+        }
+
         return "redirect:/todos";  // Redirects to the /todos URL
     }
 
-    @RequestMapping("/deleted/{todo_id}")  // Maps requests to the /deleted/{todo_id} URL
-    public String deleteTodo(@PathVariable Long todo_id){
-        service.deleteTodo(todo_id);  // Calls the service to delete the todo by ID
+    @RequestMapping("/todos/delete/{todoId}")  // Maps requests to the /deleted/{todoId} URL
+    public String deleteTodo(@PathVariable Long todoId){
+        service.deleteTodo(todoId);  // Calls the service to delete the todo by ID
         return "redirect:/todos";  // Redirects to the /todos URL
     }
 

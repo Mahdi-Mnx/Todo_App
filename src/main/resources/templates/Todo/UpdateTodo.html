@@ -18,13 +18,12 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h1 class="text-2xl font-bold mb-4 text-center">Update Todo</h1>
-        <form th:action="@{/update}" method="post" th:object="${todo}" class="space-y-4" onsubmit="return validateForm()">
-            <p th:text="${todo.todoId}" class="bg-jacar w-7 h-7 rounded-full p-1 text-sm text-white font-bold"></p>
-            <input th:field="*{title}" id="title" class="text-xl border border-gray-300 w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title" >
+        <form th:action="@{/todos/update/{todoId}(todoId=${todo.todoId})}" method="post" th:object="${todo}" class="space-y-4" onsubmit="return validateForm()">
+            <input type="hidden" th:field="*{todoId}" />
+            <input th:field="*{title}" id="title" class="text-xl border border-gray-300 w-full p-2 rounded-md" type="text" name="title" placeholder="Enter todo title" required>
             <p id="title-error" class="error-message">Title is required.</p>
-            <textarea th:field="*{description}" id="description" class="text-xl border border-gray-300 w-full p-2 rounded-md" name="description" placeholder="Enter todo description here"></textarea>
+            <textarea th:field="*{description}" id="description" class="text-xl border border-gray-300 w-full p-2 rounded-md" name="description" placeholder="Enter todo description here" required></textarea>
             <p id="description-error" class="error-message">Description is required.</p>
-
 
             <div class="flex items-center space-x-4"> <!-- Radio buttons for the todo status -->
                 <label class="text-xl">
