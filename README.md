@@ -33,3 +33,13 @@ This is a simple Todo application built using Java Spring Boot and Thymeleaf.
 git clone https://github.com/Mahdi-Mnx/Todo_App.git
 cd Todo_App
 ```
+
+### Build the application
+
+From the repository root, compile and package the project with Maven:
+
+```bash
+mvn clean package -DskipTests
+```
+
+This produces the application JAR in `target/`. Configure a local PostgreSQL database before running the application or database-dependent tests.
